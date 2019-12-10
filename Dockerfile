@@ -5,11 +5,12 @@ FROM debian:latest
 RUN apt -y update && apt -y upgrade
 
 #Download teleport binary
-#ADD  https://get.gravitational.com/teleport_4.1.4_amd64.deb /tmp/teleport.deb 
+ADD  https://get.gravitational.com/teleport_4.1.4_amd64.deb /tmp/teleport.deb 
 
 #Setup and configure direcotries and Teleport
 #using local file for testing
-COPY teleport_4.1.4_amd64.deb /tmp/teleport.deb
+#COPY teleport_4.1.4_amd64.deb /tmp/teleport.deb
+
 RUN apt-get install /tmp/teleport.deb && \
     mkdir -p /usr/local/bin /var/lib/teleport /usr/local/share/teleport && \
     adduser --disabled-password --gecos "" teleport && \
